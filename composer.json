@@ -1,0 +1,20 @@
+{
+    "name": "tomphp/tjo-patch-builder",
+    "description": "PHP Library for manipulating files to produce a patch.",
+    "require": {
+        "php": ">=5.3",
+        "phpspec/php-diff": "1.0.2"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev",
+        "phpmd/phpmd" : "1.4.0",
+        "henrikbjorn/phpspec-code-coverage" : "dev-master",
+        "squizlabs/php_codesniffer": "1.*",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "TjoPatchBuilder\\": "src/"
+        }
+    }
+}
