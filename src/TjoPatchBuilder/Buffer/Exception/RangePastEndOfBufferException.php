@@ -1,8 +1,8 @@
 <?php
 
-namespace TjoPatchBuilder\Exception;
+namespace TjoPatchBuilder\Buffer\Exception;
 
-use TjoPatchBuilder\LineRange;
+use TjoPatchBuilder\Types\LineRangeInterface;
 
 class RangePastEndOfBufferException extends \RangeException
 {
@@ -11,12 +11,12 @@ class RangePastEndOfBufferException extends \RangeException
      *
      * @return RangePastEndOfBufferException
      */
-    public static function fromRange(LineRange $range, $bufferLength)
+    public static function fromRange(LineRangeInterface $range, $bufferLength)
     {
         return new self(sprintf(
             'Range %d-%d goes beyond buffer with %d lines.',
-            $range->getStart(),
-            $range->getEnd(),
+            $range->getStart()->getNumber(),
+            $range->getEnd()->getNumber(),
             $bufferLength
         ));
     }

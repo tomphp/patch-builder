@@ -1,6 +1,6 @@
 <?php
 
-namespace TjoPatchBuilder\Exception;
+namespace TjoPatchBuilder\Types\Exception;
 
 class InvalidLineRangeException extends \RangeException
 {

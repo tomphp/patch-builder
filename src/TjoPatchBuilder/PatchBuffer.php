@@ -41,12 +41,36 @@ class PatchBuffer
         return $this->modified->getContents();
     }
 
+    /*
+    public function replace(LineRangeInterface $range, array $lines)
+    {
+        $this->modified->replace($range, $lines);
+    }
+
+    public function removeLine($lineNumber)
+    {
+        $this->modified->delete(new LineRange($lineNumber, $lineNumber));
+    }
+
+    public function insert($lineNumber, array $lines)
+    {
+        $this->modified->insert($lineNumber, $lines);
+    }
+
+    public function getLine($lineNumber)
+    {
+        $lines = $this->modified->getLines(new LineRange($lineNumber, $lineNumber));
+
+        return reset($lines);
+    }
+    */
+
     /**
      * @param string[] $contents
      *
      * @return PatchBuffer
      */
-    public static function createFromContents(array $contents)
+    public static function createWithContents(array $contents)
     {
         return new self(
             new LineBuffer($contents),

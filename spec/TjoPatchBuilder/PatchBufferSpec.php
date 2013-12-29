@@ -45,7 +45,7 @@ class PatchBufferSpec extends ObjectBehavior
     {
         $contents = array('hello', 'world');
 
-        $buffer = $this::createFromContents($contents);
+        $buffer = $this::createWithContents($contents);
 
         $buffer->getOriginalContents()->shouldReturn($contents);
         $buffer->getModifiedContents()->shouldReturn($contents);

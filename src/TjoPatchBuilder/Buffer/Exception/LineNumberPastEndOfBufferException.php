@@ -1,6 +1,6 @@
 <?php
 
-namespace TjoPatchBuilder\Exception;
+namespace TjoPatchBuilder\Buffer\Exception;
 
 class LineNumberPastEndOfBufferException extends \RangeException
 {

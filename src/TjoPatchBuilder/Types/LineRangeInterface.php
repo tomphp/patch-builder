@@ -1,6 +1,6 @@
 <?php
 
-namespace TjoPatchBuilder;
+namespace TjoPatchBuilder\Types;
 
 interface LineRangeInterface
 {

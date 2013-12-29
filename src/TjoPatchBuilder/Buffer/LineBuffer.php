@@ -2,8 +2,8 @@
 
 namespace TjoPatchBuilder\Buffer;
 
-use TjoPatchBuilder\Exception\RangePastEndOfBufferException;
-use TjoPatchBuilder\LineRangeInterface;
+use TjoPatchBuilder\Buffer\Exception\RangePastEndOfBufferException;
+use TjoPatchBuilder\Types\LineRangeInterface;
 
 class LineBuffer
 {
@@ -47,14 +47,14 @@ class LineBuffer
 
         return array_slice(
             $this->contents,
-            $range->getStart() - 1,
+            $range->getStart()->getNumber() - 1,
             $range->getLength()
         );
     }
 
     protected function assertRangeIsInsideBuffer($range)
     {
-        if ($range->getEnd() > $this->getLength()) {
+        if ($range->getEnd()->getNumber() > $this->getLength()) {
             throw RangePastEndOfBufferException::fromRange(
                 $range,
                 $this->getLength()

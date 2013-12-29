@@ -3,20 +3,25 @@
 namespace TjoPatchBuilder\Buffer;
 
 use TjoPatchBuilder\Exception\InvalidLineNumberException;
-use TjoPatchBuilder\Exception\LineNumberPastEndOfBufferException;
-use TjoPatchBuilder\LineRangeInterface;
+use TjoPatchBuilder\Buffer\Exception\LineNumberPastEndOfBufferException;
+use TjoPatchBuilder\Types\LineRangeInterface;
+use TjoPatchBuilder\Types\LineNumber;
 
 class EditableLineBuffer extends LineBuffer
 {
     /**
-     * @param int      $lineNumber
      * @param string[] $lines
      */
-    public function insert($lineNumber, array $lines)
+    public function insert(LineNumber $lineNumber, array $lines)
     {
-        $this->assertLineNumberIsWithinRange($lineNumber);
+        $this->assertLineNumberIsWithinRange($lineNumber->getNumber());
 
-        array_splice($this->contents, $lineNumber - 1, 0, $lines);
+        array_splice(
+            $this->contents,
+            $lineNumber->getNumber() - 1,
+            0,
+            $lines
+        );
     }
 
     /**
@@ -28,7 +33,7 @@ class EditableLineBuffer extends LineBuffer
 
         array_splice(
             $this->contents,
-            $range->getStart() - 1,
+            $range->getStart()->getNumber() - 1,
             $range->getLength(),
             $lines
         );
