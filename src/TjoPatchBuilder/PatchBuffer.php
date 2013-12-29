@@ -4,9 +4,6 @@ namespace TjoPatchBuilder;
 
 use TjoPatchBuilder\Buffer\EditableLineBuffer;
 use TjoPatchBuilder\Buffer\LineBuffer;
-use TjoPatchBuilder\Exception\InvalidLineNumberException;
-use TjoPatchBuilder\Exception\LineNumberPastEndOfBufferException;
-use TjoPatchBuilder\Exception\RangePastEndOfBufferException;
 
 class PatchBuffer
 {

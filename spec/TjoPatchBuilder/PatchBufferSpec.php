@@ -6,10 +6,6 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use TjoPatchBuilder\Buffer\EditableLineBuffer;
 use TjoPatchBuilder\Buffer\LineBuffer;
-use TjoPatchBuilder\Exception\InvalidLineNumberException;
-use TjoPatchBuilder\Exception\LineNumberPastEndOfBufferException;
-use TjoPatchBuilder\Exception\RangePastEndOfBufferException;
-use TjoPatchBuilder\LineRange;
 
 class PatchBufferSpec extends ObjectBehavior
 {
