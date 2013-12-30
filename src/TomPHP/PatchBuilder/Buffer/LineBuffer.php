@@ -47,7 +47,7 @@ class LineBuffer
 
         return array_slice(
             $this->contents,
-            $range->getStart()->getNumber() - 1,
+            $range->getStart()->getNumber(),
             $range->getLength()
         );
     }

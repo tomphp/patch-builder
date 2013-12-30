@@ -2,7 +2,6 @@
 
 namespace TomPHP\PatchBuilder\Buffer;
 
-use TomPHP\PatchBuilder\Exception\InvalidLineNumberException;
 use TomPHP\PatchBuilder\Buffer\Exception\LineNumberPastEndOfBufferException;
 use TomPHP\PatchBuilder\Types\LineRangeInterface;
 use TomPHP\PatchBuilder\Types\LineNumber;
@@ -18,7 +17,7 @@ class EditableLineBuffer extends LineBuffer
 
         array_splice(
             $this->contents,
-            $lineNumber->getNumber() - 1,
+            $lineNumber->getNumber(),
             0,
             $lines
         );
@@ -33,7 +32,7 @@ class EditableLineBuffer extends LineBuffer
 
         array_splice(
             $this->contents,
-            $range->getStart()->getNumber() - 1,
+            $range->getStart()->getNumber(),
             $range->getLength(),
             $lines
         );
@@ -52,11 +51,7 @@ class EditableLineBuffer extends LineBuffer
      */
     private function assertLineNumberIsWithinRange($lineNumber)
     {
-        if ($lineNumber < 1) {
-            throw new InvalidLineNumberException($lineNumber);
-        }
-
-        if ($lineNumber > $this->getLength() + 1) {
+        if ($lineNumber > $this->getLength()) {
             throw new LineNumberPastEndOfBufferException($lineNumber);
         }
     }

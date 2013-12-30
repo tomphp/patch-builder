@@ -29,19 +29,19 @@ class LineBufferSpec extends ObjectBehavior
 
     public function it_throws_if_getLines_gets_range_which_goes_past_end_of_buffer()
     {
-        $this->shouldThrow(new RangePastEndOfBufferException('Range 2-5 goes beyond buffer with 2 lines.'))
-             ->duringGetLines(LineRange::createFromNumbers(2, 5));
+        $this->shouldThrow(new RangePastEndOfBufferException('Range 1-3 goes beyond buffer with 2 lines.'))
+             ->duringGetLines(LineRange::createFromNumbers(1, 3));
     }
 
     public function it_fetches_one_line_from_the_buffer()
     {
-        $this->getLines(LineRange::createSingleLine(2,2))
+        $this->getLines(LineRange::createSingleLine(1))
              ->shouldReturn(array('contents'));
     }
 
     public function it_fetches_two_lines_from_the_buffer()
     {
-        $this->getLines(LineRange::createFromNumbers(1, 2))
+        $this->getLines(LineRange::createFromNumbers(0, 1))
              ->shouldReturn(array('buffer', 'contents'));
     }
 }

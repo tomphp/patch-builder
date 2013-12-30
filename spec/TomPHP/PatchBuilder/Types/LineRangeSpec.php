@@ -4,7 +4,6 @@ namespace spec\TomPHP\PatchBuilder\Types;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TomPHP\PatchBuilder\Types\Exception\InvalidLineNumberException;
 use TomPHP\PatchBuilder\Types\Exception\InvalidLineRangeException;
 use TomPHP\PatchBuilder\Types\LineNumber;
 
@@ -13,12 +12,6 @@ class LineRangeSpec extends ObjectBehavior
     public function let()
     {
         $this->beConstructedWith(new LineNumber(3), new LineNumber(6));
-    }
-
-    public function it_throws_if_start_line_is_negative()
-    {
-        $this->shouldThrow(new InvalidLineNumberException(0))
-             ->during('__construct', array(new LineNumber(0), new LineNumber(5)));
     }
 
     public function it_throws_if_end_line_is_less_than_start()

@@ -30,20 +30,20 @@ class EditableLineBufferSpec extends ObjectBehavior
 
     public function it_throws_when_trying_to_insert_at_a_line_after_end_of_buffer()
     {
-        $this->shouldThrow(new LineNumberPastEndOfBufferException(4))
-             ->duringInsert(new LineNumber(4), array(''));
+        $this->shouldThrow(new LineNumberPastEndOfBufferException(3))
+             ->duringInsert(new LineNumber(3), array(''));
     }
 
     public function it_inserts_at_a_given_line_number()
     {
-        $this->insert(new LineNumber(2), array('new line'));
+        $this->insert(new LineNumber(1), array('new line'));
 
         $this->getContents()->shouldReturn(array('buffer', 'new line', 'contents'));
     }
 
     public function it_inserts_multiple_lines_at_a_given_line_number()
     {
-        $this->insert(new LineNumber(2), array('line1', 'line2'));
+        $this->insert(new LineNumber(1), array('line1', 'line2'));
 
         $this->getContents()->shouldReturn(
             array('buffer', 'line1', 'line2', 'contents')
@@ -52,7 +52,7 @@ class EditableLineBufferSpec extends ObjectBehavior
 
     public function it_can_insert_at_beginning()
     {
-        $this->insert(new LineNumber(1), array('new line'));
+        $this->insert(new LineNumber(0), array('new line'));
 
         $this->getContents()->shouldReturn(
             array('new line', 'buffer', 'contents')
@@ -61,7 +61,7 @@ class EditableLineBufferSpec extends ObjectBehavior
 
     public function it_can_insert_at_end()
     {
-        $this->insert(new LineNumber(3), array('new line'));
+        $this->insert(new LineNumber(2), array('new line'));
 
         $this->getContents()->shouldReturn(
             array('buffer', 'contents', 'new line')
@@ -74,20 +74,20 @@ class EditableLineBufferSpec extends ObjectBehavior
 
     public function it_throws_if_delete_range_is_invalid()
     {
-        $this->shouldThrow(new RangePastEndOfBufferException('Range 2-5 goes beyond buffer with 2 lines.'))
-             ->duringDelete(LineRange::createFromNumbers(2, 5));
+        $this->shouldThrow(new RangePastEndOfBufferException('Range 0-3 goes beyond buffer with 2 lines.'))
+             ->duringDelete(LineRange::createFromNumbers(0, 3));
     }
 
     public function it_deletes_the_given_line()
     {
-        $this->delete(LineRange::createSingleLine(1));
+        $this->delete(LineRange::createSingleLine(0));
 
         $this->getContents()->shouldReturn(array('contents'));
     }
 
     public function it_deletes_a_line_range()
     {
-        $this->delete(LineRange::createFromNumbers(1, 2));
+        $this->delete(LineRange::createFromNumbers(0, 1));
 
         $this->getContents()->shouldReturn(array());
     }
@@ -98,13 +98,13 @@ class EditableLineBufferSpec extends ObjectBehavior
 
     public function it_throws_if_replace_range_is_invalid()
     {
-        $this->shouldThrow(new RangePastEndOfBufferException('Range 2-5 goes beyond buffer with 2 lines.'))
-             ->duringReplace(LineRange::createFromNumbers(2, 5), array());
+        $this->shouldThrow(new RangePastEndOfBufferException('Range 1-4 goes beyond buffer with 2 lines.'))
+             ->duringReplace(LineRange::createFromNumbers(1, 4), array());
     }
 
     public function it_replaces_a_given_line_with_lines()
     {
-        $this->replace(LineRange::createSingleLine(1), array('line1', 'line2'));
+        $this->replace(LineRange::createSingleLine(0), array('line1', 'line2'));
 
         $this->getContents()->shouldReturn(array('line1', 'line2', 'contents'));
     }

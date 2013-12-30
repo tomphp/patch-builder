@@ -18,15 +18,10 @@ class LineRange implements LineRangeInterface
     private $end;
 
     /**
-     * @throws InvalidLineNumberException
      * @throws InvalidLineRangeException
      */
     public function __construct(LineNumber $start, LineNumber $end)
     {
-        if ($start->getNumber() < 1) {
-            throw new InvalidLineNumberException(0);
-        }
-
         if ($start->getNumber() > $end->getNumber()) {
             throw InvalidLineRangeException::startGreaterThanEnd();
         }
