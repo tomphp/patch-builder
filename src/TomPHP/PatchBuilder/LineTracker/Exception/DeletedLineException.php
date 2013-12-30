@@ -1,6 +1,6 @@
 <?php
 
-namespace TjoPatchBuilder\LineTracker\Exception;
+namespace TomPHP\PatchBuilder\LineTracker\Exception;
 
 class DeletedLineException extends \RuntimeException
 {

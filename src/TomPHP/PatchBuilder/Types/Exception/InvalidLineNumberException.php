@@ -1,6 +1,6 @@
 <?php
 
-namespace TjoPatchBuilder\Types\Exception;
+namespace TomPHP\PatchBuilder\Types\Exception;
 
 class InvalidLineNumberException extends \RangeException
 {

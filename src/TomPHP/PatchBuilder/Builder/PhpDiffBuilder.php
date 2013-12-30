@@ -1,9 +1,9 @@
 <?php
 
-namespace TjoPatchBuilder\Builder;
+namespace TomPHP\PatchBuilder\Builder;
 
-use TjoPatchBuilder\PatchBuffer;
-use TjoPatchBuilder\PatchBuilder;
+use TomPHP\PatchBuilder\PatchBuffer;
+use TomPHP\PatchBuilder\PatchBuilder;
 
 class PhpDiffBuilder implements PatchBuilder
 {

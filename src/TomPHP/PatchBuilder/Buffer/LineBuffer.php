@@ -1,9 +1,9 @@
 <?php
 
-namespace TjoPatchBuilder\Buffer;
+namespace TomPHP\PatchBuilder\Buffer;
 
-use TjoPatchBuilder\Buffer\Exception\RangePastEndOfBufferException;
-use TjoPatchBuilder\Types\LineRangeInterface;
+use TomPHP\PatchBuilder\Buffer\Exception\RangePastEndOfBufferException;
+use TomPHP\PatchBuilder\Types\LineRangeInterface;
 
 class LineBuffer
 {

@@ -1,9 +1,13 @@
 <?php
 
-namespace TjoPatchBuilder;
+namespace TomPHP\PatchBuilder;
 
-use TjoPatchBuilder\Buffer\EditableLineBuffer;
-use TjoPatchBuilder\Buffer\LineBuffer;
+use TomPHP\PatchBuilder\Buffer\EditableLineBuffer;
+use TomPHP\PatchBuilder\Buffer\LineBuffer;
+use TomPHP\PatchBuilder\Types\LineRangeInterface;
+use TomPHP\PatchBuilder\LineTracker\LineTracker;
+use TomPHP\PatchBuilder\Types\OriginalLineNumber;
+use TomPHP\PatchBuilder\Types\LineRange;
 
 class PatchBuffer
 {
@@ -17,12 +21,21 @@ class PatchBuffer
      */
     private $modified;
 
-    public function __construct(LineBuffer $original, EditableLineBuffer $modified)
-    {
+    /**
+     * @var LineTracker
+     */
+    private $lineTracker;
+
+    public function __construct(
+        LineBuffer $original,
+        EditableLineBuffer $modified,
+        LineTracker $lineTracker
+    ) {
         // @todo Verify contents matches
 
-        $this->original = $original;
-        $this->modified = $modified;
+        $this->original    = $original;
+        $this->modified    = $modified;
+        $this->lineTracker = $lineTracker;
     }
 
     /**
@@ -41,12 +54,19 @@ class PatchBuffer
         return $this->modified->getContents();
     }
 
-    /*
     public function replace(LineRangeInterface $range, array $lines)
     {
+        if ($range->getStart() instanceof OriginalLineNumber) {
+            $range = new LineRange(
+                $this->lineTracker->trackLine($range->getStart()),
+                $this->lineTracker->trackLine($range->getEnd())
+            );
+        }
+
         $this->modified->replace($range, $lines);
     }
 
+    /*
     public function removeLine($lineNumber)
     {
         $this->modified->delete(new LineRange($lineNumber, $lineNumber));
@@ -74,7 +94,8 @@ class PatchBuffer
     {
         return new self(
             new LineBuffer($contents),
-            new EditableLineBuffer($contents)
+            new EditableLineBuffer($contents),
+            new LineTracker()
         );
     }
 }

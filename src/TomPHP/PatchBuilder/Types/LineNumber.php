@@ -1,8 +1,8 @@
 <?php
 
-namespace TjoPatchBuilder\Types;
+namespace TomPHP\PatchBuilder\Types;
 
-use TjoPatchBuilder\Types\Exception\InvalidLineNumberException;
+use TomPHP\PatchBuilder\Types\Exception\InvalidLineNumberException;
 
 class LineNumber
 {

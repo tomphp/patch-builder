@@ -1,6 +1,6 @@
 <?php
 
-namespace TjoPatchBuilder;
+namespace TomPHP\PatchBuilder;
 
 interface PatchBuilder
 {

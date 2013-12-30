@@ -1,11 +1,11 @@
 <?php
 
-namespace TjoPatchBuilder\LineTracker;
+namespace TomPHP\PatchBuilder\LineTracker;
 
-use TjoPatchBuilder\LineTracker\Exception\DeletedLineException;
-use TjoPatchBuilder\Types\LineRange;
-use TjoPatchBuilder\Types\LineNumber;
-use TjoPatchBuilder\Types\ModifiedLineNumber;
+use TomPHP\PatchBuilder\LineTracker\Exception\DeletedLineException;
+use TomPHP\PatchBuilder\Types\LineRange;
+use TomPHP\PatchBuilder\Types\LineNumber;
+use TomPHP\PatchBuilder\Types\ModifiedLineNumber;
 
 class LineTracker
 {

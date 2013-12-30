@@ -1,11 +1,11 @@
 <?php
 
-namespace TjoPatchBuilder\Buffer;
+namespace TomPHP\PatchBuilder\Buffer;
 
-use TjoPatchBuilder\Exception\InvalidLineNumberException;
-use TjoPatchBuilder\Buffer\Exception\LineNumberPastEndOfBufferException;
-use TjoPatchBuilder\Types\LineRangeInterface;
-use TjoPatchBuilder\Types\LineNumber;
+use TomPHP\PatchBuilder\Exception\InvalidLineNumberException;
+use TomPHP\PatchBuilder\Buffer\Exception\LineNumberPastEndOfBufferException;
+use TomPHP\PatchBuilder\Types\LineRangeInterface;
+use TomPHP\PatchBuilder\Types\LineNumber;
 
 class EditableLineBuffer extends LineBuffer
 {

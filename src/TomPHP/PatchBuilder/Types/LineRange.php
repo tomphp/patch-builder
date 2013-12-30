@@ -1,9 +1,9 @@
 <?php
 
-namespace TjoPatchBuilder\Types;
+namespace TomPHP\PatchBuilder\Types;
 
-use TjoPatchBuilder\Types\Exception\InvalidLineNumberException;
-use TjoPatchBuilder\Types\Exception\InvalidLineRangeException;
+use TomPHP\PatchBuilder\Types\Exception\InvalidLineNumberException;
+use TomPHP\PatchBuilder\Types\Exception\InvalidLineRangeException;
 
 class LineRange implements LineRangeInterface
 {

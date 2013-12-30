@@ -1,5 +1,5 @@
 {
-    "name": "tomphp/tjo-patch-builder",
+    "name": "tomphp/patch-builder",
     "description": "PHP Library for manipulating files to produce a patch.",
     "require": {
         "php": ">=5.3",

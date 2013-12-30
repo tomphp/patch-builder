@@ -1,6 +1,6 @@
 <?php
 
-namespace TjoPatchBuilder\Types;
+namespace TomPHP\PatchBuilder\Types;
 
 class OriginalLineNumber extends LineNumber
 {
