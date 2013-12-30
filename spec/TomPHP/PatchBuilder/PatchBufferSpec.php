@@ -66,8 +66,18 @@ class PatchBufferSpec extends ObjectBehavior
      * replace()
      */
 
-    public function it_calls_replace_on_modified_content(LineRange $range)
+    public function it_calls_delete_if_no_lines_are_given()
     {
+        $range = LineRange::createFromNumbers(5, 7);
+
+        $this->modified->delete($range)->shouldBeCalled();
+
+        $this->replace($range, array());
+    }
+
+    public function it_calls_replace_on_modified_content()
+    {
+        $range = LineRange::createFromNumbers(5, 7);
         $lines = array('lines');
 
         $this->modified->replace($range, $lines)->shouldBeCalled();
@@ -82,9 +92,47 @@ class PatchBufferSpec extends ObjectBehavior
 
         $this->setupRangeConversionTests($original, $modified);
 
+        // Why is this needed ?
+        $this->lineTracker
+             ->deleteLines(Argument::any())
+             ->shouldBeCalled();
+        $this->lineTracker
+             ->addLines(Argument::any())
+             ->shouldBeCalled();
+
         $this->modified->replace($modified, Argument::any())->shouldBeCalled();
 
-        $this->replace($original, array());
+        $this->replace($original, array('x'));
+    }
+
+    public function it_tracks_lines_removed_when_replacing()
+    {
+        $range = LineRange::createFromNumbers(5, 10);
+
+        $this->lineTracker
+             ->deleteLines($range)
+             ->shouldBeCalled();
+
+        // WHY???
+        $this->lineTracker
+             ->addLines(Argument::any())
+             ->shouldBeCalled();
+
+        $this->replace($range, array(''));
+    }
+
+    public function it_tracks_lines_inserted_when_replacing()
+    {
+        $this->lineTracker
+             ->addLines(LineRange::createFromNumbers(3, 5))
+             ->shouldBeCalled();
+
+        // WHY???
+        $this->lineTracker
+             ->deleteLines(Argument::any())
+             ->shouldBeCalled();
+
+        $this->replace(LineRange::createFromNumbers(3, 8), array('1', '2', '3'));
     }
 
     /*
