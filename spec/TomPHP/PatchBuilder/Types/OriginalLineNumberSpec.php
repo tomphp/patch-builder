@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\TjoPatchBuilder\Types;
+namespace spec\TomPHP\PatchBuilder\Types;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -14,6 +14,6 @@ class OriginalLineNumberSpec extends ObjectBehavior
 
     public function it_a_line_number()
     {
-        $this->shouldHaveType('TjoPatchBuilder\Types\LineNumber');
+        $this->shouldHaveType('TomPHP\PatchBuilder\Types\LineNumber');
     }
 }

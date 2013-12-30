@@ -1,17 +1,17 @@
 <?php
 
-namespace spec\TjoPatchBuilder\Builder;
+namespace spec\TomPHP\PatchBuilder\Builder;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TjoPatchBuilder\PatchBuffer;
+use TomPHP\PatchBuilder\PatchBuffer;
 
 class PhpDiffBuilderSpec extends ObjectBehavior
 {
     public function it_is_a_patch_builder()
     {
         $this->shouldBeAnInstanceOf(
-            'TjoPatchBuilder\PatchBuilder'
+            'TomPHP\PatchBuilder\PatchBuilder'
         );
     }
 

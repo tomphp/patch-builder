@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\TjoPatchBuilder\Types;
+namespace spec\TomPHP\PatchBuilder\Types;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TjoPatchBuilder\Types\Exception\InvalidLineNumberException;
+use TomPHP\PatchBuilder\Types\Exception\InvalidLineNumberException;
 
 class LineNumberSpec extends ObjectBehavior
 {

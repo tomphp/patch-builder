@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\TjoPatchBuilder\Buffer;
+namespace spec\TomPHP\PatchBuilder\Buffer;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TjoPatchBuilder\Buffer\Exception\RangePastEndOfBufferException;
-use TjoPatchBuilder\Types\LineRange;
+use TomPHP\PatchBuilder\Buffer\Exception\RangePastEndOfBufferException;
+use TomPHP\PatchBuilder\Types\LineRange;
 
 class LineBufferSpec extends ObjectBehavior
 {

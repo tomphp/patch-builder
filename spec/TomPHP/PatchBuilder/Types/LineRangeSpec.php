@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\TjoPatchBuilder\Types;
+namespace spec\TomPHP\PatchBuilder\Types;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TjoPatchBuilder\Types\Exception\InvalidLineNumberException;
-use TjoPatchBuilder\Types\Exception\InvalidLineRangeException;
-use TjoPatchBuilder\Types\LineNumber;
+use TomPHP\PatchBuilder\Types\Exception\InvalidLineNumberException;
+use TomPHP\PatchBuilder\Types\Exception\InvalidLineRangeException;
+use TomPHP\PatchBuilder\Types\LineNumber;
 
 class LineRangeSpec extends ObjectBehavior
 {
@@ -30,7 +30,7 @@ class LineRangeSpec extends ObjectBehavior
     public function it_implements_LineRangeInterface()
     {
         $this->shouldBeAnInstanceOf(
-            'TjoPatchBuilder\Types\LineRangeInterface'
+            'TomPHP\PatchBuilder\Types\LineRangeInterface'
         );
     }
 

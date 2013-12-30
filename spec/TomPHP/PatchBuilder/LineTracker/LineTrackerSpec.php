@@ -1,19 +1,19 @@
 <?php
 
-namespace spec\TjoPatchBuilder\LineTracker;
+namespace spec\TomPHP\PatchBuilder\LineTracker;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TjoPatchBuilder\LineTracker\Exception\DeletedLineException;
-use TjoPatchBuilder\Types\LineRange;
-use TjoPatchBuilder\Types\LineNumber;
+use TomPHP\PatchBuilder\LineTracker\Exception\DeletedLineException;
+use TomPHP\PatchBuilder\Types\LineRange;
+use TomPHP\PatchBuilder\Types\LineNumber;
 
 class LineTrackerSpec extends ObjectBehavior
 {
     public function it_returns_modified_line_numbers()
     {
         $this->trackLine(new LineNumber(5))
-             ->shouldReturnAnInstanceOf('TjoPatchBuilder\Types\ModifiedLineNumber');
+             ->shouldReturnAnInstanceOf('TomPHP\PatchBuilder\Types\ModifiedLineNumber');
     }
 
     public function it_returns_the_number_given_when_no_changes_have_been_made()

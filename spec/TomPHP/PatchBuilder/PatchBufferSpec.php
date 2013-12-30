@@ -1,16 +1,16 @@
 <?php
 
-namespace spec\TjoPatchBuilder;
+namespace spec\TomPHP\PatchBuilder;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TjoPatchBuilder\Buffer\EditableLineBuffer;
-use TjoPatchBuilder\Buffer\LineBuffer;
-use TjoPatchBuilder\Types\LineRange;
-use TjoPatchBuilder\Types\ModifiedLineNumber;
-use TjoPatchBuilder\Types\OriginalLineNumber;
-use TjoPatchBuilder\LineTracker\LineTracker;
-use TjoPatchBuilder\Types\LineNumber;
+use TomPHP\PatchBuilder\Buffer\EditableLineBuffer;
+use TomPHP\PatchBuilder\Buffer\LineBuffer;
+use TomPHP\PatchBuilder\Types\LineRange;
+use TomPHP\PatchBuilder\Types\ModifiedLineNumber;
+use TomPHP\PatchBuilder\Types\OriginalLineNumber;
+use TomPHP\PatchBuilder\LineTracker\LineTracker;
+use TomPHP\PatchBuilder\Types\LineNumber;
 
 class PatchBufferSpec extends ObjectBehavior
 {

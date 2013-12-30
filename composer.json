@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-0": {
-            "TjoPatchBuilder\\": "src/"
+            "TomPHP\\PatchBuilder\\": "src/"
         }
     }
 }

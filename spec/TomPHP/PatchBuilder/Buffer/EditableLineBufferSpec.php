@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\TjoPatchBuilder\Buffer;
+namespace spec\TomPHP\PatchBuilder\Buffer;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use TjoPatchBuilder\Buffer\Exception\LineNumberPastEndOfBufferException;
-use TjoPatchBuilder\Buffer\Exception\RangePastEndOfBufferException;
-use TjoPatchBuilder\Types\LineRange;
-use TjoPatchBuilder\Types\LineNumber;
+use TomPHP\PatchBuilder\Buffer\Exception\LineNumberPastEndOfBufferException;
+use TomPHP\PatchBuilder\Buffer\Exception\RangePastEndOfBufferException;
+use TomPHP\PatchBuilder\Types\LineRange;
+use TomPHP\PatchBuilder\Types\LineNumber;
 
 class EditableLineBufferSpec extends ObjectBehavior
 {
@@ -21,7 +21,7 @@ class EditableLineBufferSpec extends ObjectBehavior
 
     public function it_extends_LineBuffer()
     {
-        $this->shouldBeAnInstanceOf('TjoPatchBuilder\Buffer\LineBuffer');
+        $this->shouldBeAnInstanceOf('TomPHP\PatchBuilder\Buffer\LineBuffer');
     }
 
     /*
