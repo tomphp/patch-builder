@@ -91,6 +91,13 @@ class PatchBufferSpec extends ObjectBehavior
      * insert()
      */
 
+    public function it_skips_if_trying_to_insert_nothing(LineNumber $line)
+    {
+        $this->modified->insert()->shouldNotBeCalled();
+
+        $this->insert($line, array());
+    }
+
     public function it_calls_insert_on_modified_content(LineNumber $line)
     {
         $lines = array('lines');
@@ -110,11 +117,25 @@ class PatchBufferSpec extends ObjectBehavior
              ->trackLine($original)
              ->willReturn($modified);
 
+        // Why do I need to had this here?
+        $this->lineTracker
+             ->addLines(Argument::any())
+             ->shouldBeCalled();
+
         $this->modified
              ->insert($modified, Argument::any())
              ->shouldBeCalled();
 
-        $this->insert($modified, array());
+        $this->insert($modified, array('x'));
+    }
+
+    public function it_tracks_inserting_of_lines()
+    {
+        $this->lineTracker
+             ->addLines(LineRange::createFromNumbers(3, 5))
+             ->shouldBeCalled();
+
+        $this->insert(new LineNumber(3), array('1', '2', '3'));
     }
 
     /*
@@ -135,9 +156,25 @@ class PatchBufferSpec extends ObjectBehavior
 
         $this->setupRangeConversionTests($original, $modified);
 
+        // Again why does this need to be here?
+        $this->lineTracker
+             ->deleteLines(Argument::any())
+             ->shouldBeCalled();
+
         $this->modified->delete($modified)->shouldBeCalled();
 
         $this->delete($original);
+    }
+
+    public function it_tracks_deletion_of_lines()
+    {
+        $range = LineRange::createFromNumbers(5, 10);
+
+        $this->lineTracker
+             ->deleteLines($range)
+             ->shouldBeCalled();
+
+        $this->delete($range);
     }
 
     /*
