@@ -92,13 +92,8 @@ class PatchBufferSpec extends ObjectBehavior
 
         $this->setupRangeConversionTests($original, $modified);
 
-        // Why is this needed ?
-        $this->lineTracker
-             ->deleteLines(Argument::any())
-             ->shouldBeCalled();
-        $this->lineTracker
-             ->addLines(Argument::any())
-             ->shouldBeCalled();
+        $this->lineTracker->deleteLines(Argument::any())->willReturn();
+        $this->lineTracker->addLines(Argument::any())->willReturn();
 
         $this->modified->replace($modified, Argument::any())->shouldBeCalled();
 
@@ -113,10 +108,7 @@ class PatchBufferSpec extends ObjectBehavior
              ->deleteLines($range)
              ->shouldBeCalled();
 
-        // WHY???
-        $this->lineTracker
-             ->addLines(Argument::any())
-             ->shouldBeCalled();
+        $this->lineTracker->addLines(Argument::any())->willReturn();
 
         $this->replace($range, array(''));
     }
@@ -127,10 +119,7 @@ class PatchBufferSpec extends ObjectBehavior
              ->addLines(LineRange::createFromNumbers(3, 5))
              ->shouldBeCalled();
 
-        // WHY???
-        $this->lineTracker
-             ->deleteLines(Argument::any())
-             ->shouldBeCalled();
+        $this->lineTracker->deleteLines(Argument::any())->willReturn();
 
         $this->replace(LineRange::createFromNumbers(3, 8), array('1', '2', '3'));
     }
@@ -165,10 +154,7 @@ class PatchBufferSpec extends ObjectBehavior
              ->trackLine($original)
              ->willReturn($modified);
 
-        // Why do I need to had this here?
-        $this->lineTracker
-             ->addLines(Argument::any())
-             ->shouldBeCalled();
+        $this->lineTracker->addLines(Argument::any())->willReturn();
 
         $this->modified
              ->insert($modified, Argument::any())
@@ -204,10 +190,7 @@ class PatchBufferSpec extends ObjectBehavior
 
         $this->setupRangeConversionTests($original, $modified);
 
-        // Again why does this need to be here?
-        $this->lineTracker
-             ->deleteLines(Argument::any())
-             ->shouldBeCalled();
+        $this->lineTracker->deleteLines(Argument::any())->willReturn();
 
         $this->modified->delete($modified)->shouldBeCalled();
 
