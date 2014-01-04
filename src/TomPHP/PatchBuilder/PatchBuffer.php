@@ -69,6 +69,9 @@ class PatchBuffer
         return $this->modified->getContents();
     }
 
+    /**
+     * @param string[] $lines
+     */
     public function replace(LineRangeInterface $range, array $lines)
     {
         if (empty($lines)) {
@@ -83,6 +86,9 @@ class PatchBuffer
         $this->lineTracker->addLines($this->calculateInsertRange($range->getStart(), $lines));
     }
 
+    /**
+     * @param string[] $lines
+     */
     public function insert(LineNumber $lineNumber, array $lines)
     {
         if (empty($lines)) {
@@ -91,9 +97,23 @@ class PatchBuffer
 
         $lineNumber = $this->convertIfIsOriginalLineNumber($lineNumber);
 
-        $this->modified->insert($lineNumber, $lines);
+        $this->insertAtLineNumber($lineNumber, $lines);
+    }
 
-        $this->lineTracker->addLines($this->calculateInsertRange($lineNumber, $lines));
+    /**
+     * @param string[] $lines
+     */
+    public function append(LineNumber $lineNumber, array $lines)
+    {
+        if (empty($lines)) {
+            return;
+        }
+
+        $lineNumber = $this->convertIfIsOriginalLineNumber($lineNumber);
+
+        $lineNumber = new LineNumber($lineNumber->getNumber() + 1);
+
+        $this->insertAtLineNumber($lineNumber, $lines);
     }
 
     public function delete(LineRangeInterface $range)
@@ -115,6 +135,13 @@ class PatchBuffer
         $lines = $this->modified->getLines(LineRange::createSingleLine($lineNumber->getNumber()));
 
         return reset($lines);
+    }
+
+    private function insertAtLineNumber(LineNumber $lineNumber, array $lines)
+    {
+        $this->modified->insert($lineNumber, $lines);
+
+        $this->lineTracker->addLines($this->calculateInsertRange($lineNumber, $lines));
     }
 
     /**

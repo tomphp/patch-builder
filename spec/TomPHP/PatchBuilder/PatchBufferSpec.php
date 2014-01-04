@@ -173,6 +173,55 @@ class PatchBufferSpec extends ObjectBehavior
     }
 
     /*
+     * append()
+     */
+
+    public function it_skips_if_trying_to_append_nothing(LineNumber $line)
+    {
+        $this->modified->insert()->shouldNotBeCalled();
+
+        $this->append($line, array());
+    }
+
+    public function it_calls_append_on_modified_content()
+    {
+        $lines = array('lines');
+
+        $this->modified->insert(new LineNumber(7), $lines)->shouldBeCalled();
+
+        $this->append(new LineNumber(6), $lines);
+    }
+
+    public function it_adds_1_to_modified_line_number_and_inserts()
+    {
+        $original = new OriginalLineNumber(3);
+        $modified = new ModifiedLineNumber(8);
+        $final    = new LineNumber(9);
+
+        $lines = array('lines');
+
+        $this->lineTracker
+             ->trackLine($original)
+             ->shouldBeCalled()
+             ->willReturn($modified);
+
+        $this->modified->insert($final, $lines)->shouldBeCalled();
+
+        $this->lineTracker->addLines(Argument::any())->willReturn();
+
+        $this->append($original, $lines);
+    }
+
+    public function it_tracks_appending()
+    {
+        $this->lineTracker
+             ->addLines(LineRange::createFromNumbers(6, 7))
+             ->shouldBeCalled();
+
+        $this->append(new LineNumber(5), array('1', '2'));
+    }
+
+    /*
      * delete()
      */
 
