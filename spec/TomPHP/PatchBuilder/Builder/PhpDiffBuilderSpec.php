@@ -15,10 +15,19 @@ class PhpDiffBuilderSpec extends ObjectBehavior
         );
     }
 
+    public function it_outputs_empty_string_if_no_changes_exist(PatchBuffer $buffer)
+    {
+        $buffer->isModified()->willReturn(false);
+
+        $this->buildPatch('old', 'new', $buffer)->shouldReturn('');
+    }
+
     public function it_creates_diff_from_buffer(PatchBuffer $buffer)
     {
         $originalFile = 'aaa/aaa/file.txt';
         $newFile = 'bbb/bbb/file.txt';
+
+        $buffer->isModified()->willReturn(true);
 
         $buffer->getOriginalContents()->willReturn(array(
             'line1',

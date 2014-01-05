@@ -137,6 +137,14 @@ class PatchBuffer
         return reset($lines);
     }
 
+    /**
+     * @return boolean
+     */
+    public function isModified()
+    {
+        return $this->original->getContents() !== $this->modified->getContents();
+    }
+
     private function insertAtLineNumber(LineNumber $lineNumber, array $lines)
     {
         $this->modified->insert($lineNumber, $lines);

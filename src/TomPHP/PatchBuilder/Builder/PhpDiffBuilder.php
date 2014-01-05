@@ -9,6 +9,10 @@ class PhpDiffBuilder implements PatchBuilder
 {
     public function buildPatch($originalFile, $modfiedFileName, PatchBuffer $buffer)
     {
+        if (!$buffer->isModified()) {
+            return '';
+        }
+
         $diff = new \Diff(
             $buffer->getOriginalContents(),
             $buffer->getModifiedContents()

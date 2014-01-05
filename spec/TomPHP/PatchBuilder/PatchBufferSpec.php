@@ -298,6 +298,28 @@ class PatchBufferSpec extends ObjectBehavior
     }
 
     /*
+     * isModified()
+     */
+
+    public function it_is_not_modified_if_contents_of_buffers_match()
+    {
+        $content = array('blah');
+
+        $this->original->getContents()->willReturn($content);
+        $this->modified->getContents()->willReturn($content);
+
+        $this->shouldNotBeModified();
+    }
+
+    public function it_is_modified_if_contents_of_buffers_do_not_match()
+    {
+        $this->original->getContents()->willReturn(array('a'));
+        $this->modified->getContents()->willReturn(array('b'));
+
+        $this->shouldBeModified();
+    }
+
+    /*
      * Private methods
      */
 
