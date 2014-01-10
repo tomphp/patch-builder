@@ -12,9 +12,9 @@ before_script:
 script:
   - vendor/bin/phpspec run -n
   - vendor/bin/phpcs --standard=psr2 src
-#  - vendor/bin/phpmd src text codesize
+  - vendor/bin/phpmd src text codesize
 
-#after_script:
-#  - php vendor/bin/coveralls -v
-#  - wget https://scrutinizer-ci.com/ocular.phar
-#  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+after_script:
+  - php vendor/bin/coveralls -v
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
