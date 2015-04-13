@@ -1,9 +1,8 @@
-PatchBuilder
-===============
+Patch Builder
+=============
 
-[![Build Status](https://travis-ci.org/tomphp/PatchBuilder.png?branch=master)](https://travis-ci.org/tomphp/PatchBuilder)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/tomphp/PatchBuilder/badges/quality-score.png?s=d33a07395fdfc1a08692e8b01d338824d8d61bbf)](https://scrutinizer-ci.com/g/tomphp/PatchBuilder/)
-[![Coverage Status](https://coveralls.io/repos/tomphp/PatchBuilder/badge.png)](https://coveralls.io/r/tomphp/PatchBuilder)
+[![Build Status](https://travis-ci.org/tomphp/patch-builder.png?branch=master)](https://travis-ci.org/tomphp/patch-builder)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tomphp/patch-builder/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/tomphp/patch-builder/?branch=master)
 
 A PHP Library which allows your to load some text, make some modifications to it
 and then generate a patch.

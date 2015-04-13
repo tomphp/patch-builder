@@ -1,20 +1,22 @@
 {
     "name": "tomphp/patch-builder",
     "description": "PHP Library for manipulating files to produce a patch.",
+    "license": "MIT",
     "require": {
         "php": ">=5.3",
-        "phpspec/php-diff": "1.0.2"
+        "phpspec/php-diff": "^1.0.2"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev",
         "phpmd/phpmd" : "1.4.0",
-        "henrikbjorn/phpspec-code-coverage" : "dev-master",
-        "squizlabs/php_codesniffer": "1.*",
-        "satooshi/php-coveralls": "dev-master"
+        "squizlabs/php_codesniffer": "1.*"
     },
     "autoload": {
         "psr-0": {
             "TomPHP\\PatchBuilder\\": "src/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpcs --standard=psr2 src && vendor/bin/phpspec run -n --ansi"
     }
 }
